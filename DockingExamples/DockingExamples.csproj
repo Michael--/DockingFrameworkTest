@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Python\" />
+    <Folder Include="Florence\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Python\dummy.txt">
@@ -111,6 +112,18 @@
     <ProjectReference Include="..\external\DockingFramework\Docking\Docking.csproj">
       <Project>{8DDC0184-EBA8-4264-993D-E47173F12814}</Project>
       <Name>Docking</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\external\Florence\src\Florence\Florence.csproj">
+      <Project>{E6867FF5-74EC-4464-8958-D71CB46232F3}</Project>
+      <Name>Florence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\external\Florence\src\Florence.GtkSharp\Florence.GtkSharp.csproj">
+      <Project>{1BDEF389-7E30-4D02-93F9-449CC19D07BF}</Project>
+      <Name>Florence.GtkSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\external\Florence\demo\csharp\DemoLib\DemoLib.csproj">
+      <Project>{DD6DB5B6-6718-4911-9E8A-C96B74B669E2}</Project>
+      <Name>DemoLib</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
