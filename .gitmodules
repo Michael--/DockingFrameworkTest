@@ -4,3 +4,6 @@
 [submodule "external/Florence"]
 	path = external/Florence
 	url = https://github.com/Michael--/Florence.git
+[submodule "external/DockingFrameworkExamples"]
+	path = external/DockingFrameworkExamples
+	url = ../DockingFrameworkExamples.git
