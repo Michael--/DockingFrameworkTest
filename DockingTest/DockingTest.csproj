@@ -73,13 +73,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\DockingExamples\DockingExamples.csproj">
-      <Project>{D3728416-6C94-4A4B-A121-E0B822FE3F26}</Project>
-      <Name>DockingExamples</Name>
-    </ProjectReference>
     <ProjectReference Include="..\external\DockingFramework\Docking\Docking.csproj">
       <Project>{8DDC0184-EBA8-4264-993D-E47173F12814}</Project>
       <Name>Docking</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\external\DockingFrameworkExamples\DockingExamples.csproj">
+      <Project>{D3728416-6C94-4A4B-A121-E0B822FE3F26}</Project>
+      <Name>DockingExamples</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
