@@ -82,6 +82,8 @@
     <Compile Include="Python\Python.cs" />
     <Compile Include="TextViewer.cs" />
     <Compile Include="gtk-gui\Examples.TextViewer.cs" />
+    <Compile Include="FlorenceDockingDemo.cs" />
+    <Compile Include="gtk-gui\Examples.FlorenceDockingDemo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -101,7 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Python\" />
-    <Folder Include="Florence\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Python\dummy.txt">

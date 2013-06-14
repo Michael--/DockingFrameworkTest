@@ -5,7 +5,8 @@
     <target-gtk-version>2.12</target-gtk-version>
   </configuration>
   <import>
-    <widget-library name="../../Docking/bin/x86/Debug/Docking.dll" />
+    <widget-library name="../../external/DockingFramework/Docking/bin/x86/Debug/Docking.dll" />
+    <widget-library name="../../external/Florence/src/Florence.GtkSharp/bin/x86/Debug/Florence.GtkSharp.dll" />
     <widget-library name="../bin/x86/Debug/Examples.dll" internal="true" />
   </import>
   <widget class="Gtk.Bin" id="Examples.ExampleHelloWorld" design-size="300 300">
@@ -445,6 +446,31 @@
         </child>
         <child>
           <placeholder />
+        </child>
+        <child>
+          <placeholder />
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Bin" id="Examples.FlorenceDockingDemo" design-size="300 300">
+    <property name="MemberName" />
+    <property name="Visible">False</property>
+    <child>
+      <widget class="Gtk.VBox" id="vbox1">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <child>
+          <placeholder />
+        </child>
+        <child>
+          <widget class="Florence.GtkSharp.PlotWidget" id="plotwidget1">
+            <property name="MemberName" />
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">False</property>
+          </packing>
         </child>
         <child>
           <placeholder />
