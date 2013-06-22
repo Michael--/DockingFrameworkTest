@@ -31,12 +31,14 @@ public partial class MainWindow : ComponentManager
 
         // load old configuration or init new one if not existing
         LoadConfigurationFile(mConfig);
+        InstallLanguageMenu("Options");
 
         // update with own persistence
         LoadPersistence();
 
         // set default layout and add layout menu
         InstallLayoutMenu("Default");
+
 
 
         // after layout has been set, call component initialization
