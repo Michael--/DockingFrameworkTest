@@ -4,26 +4,32 @@
 public partial class MainWindow
 {
 	private global::Gtk.UIManager UIManager;
+
 	private global::Gtk.Action QuitAction;
+
 	private global::Gtk.VBox vbox1;
+
 	private global::Gtk.MenuBar menubar3;
+
 	private global::Gtk.Toolbar theToolBar;
+
 	private global::Docking.DockFrame theDockFrame;
+
 	private global::Gtk.Statusbar theStatusBar;
-	
+
 	protected virtual void Build ()
 	{
 		global::Stetic.Gui.Initialize (this);
 		// Widget MainWindow
 		this.UIManager = new global::Gtk.UIManager ();
 		global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup ("Default");
-		this.QuitAction = new global::Gtk.Action ("QuitAction", global::Mono.Unix.Catalog.GetString ("Quit"), null, null);
-		this.QuitAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Quit");
+		this.QuitAction = new global::Gtk.Action ("QuitAction", "Quit", null, null);
+		this.QuitAction.ShortLabel = "Quit";
 		w1.Add (this.QuitAction, "<Primary><Mod2>q");
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
-		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
+		this.Title = "MainWindow";
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		this.AllowShrink = true;
 		this.DefaultWidth = 800;
@@ -79,7 +85,6 @@ public partial class MainWindow
 			this.Child.ShowAll ();
 		}
 		this.Show ();
-		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		this.QuitAction.Activated += new global::System.EventHandler (this.OnQuitActionActivated);
 	}
 }

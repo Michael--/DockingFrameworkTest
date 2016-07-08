@@ -1,50 +1,48 @@
 using System;
-using Gtk;
-using Docking;
-using System.IO;
 using Docking.Components;
-using System.Diagnostics;
-using System.Xml;
-using System.Xml.Serialization;
-using System.Collections.Generic;
 
 public partial class MainWindow : ComponentManager
 {
-    String mConfig = "config.xml";
-
-    public MainWindow (): base (Gtk.WindowType.Toplevel)
+    public MainWindow (string [] args, string application_name): base (args, application_name)
     {
+        var assemblyDirectory = System.IO.Path.GetDirectoryName (System.Reflection.Assembly.GetEntryAssembly ().Location);
+
+        // configuration should stored in shared folder and not in application folder, note: this is an example
+        var configFile = System.IO.Path.Combine (assemblyDirectory, "config.xml");
+
+        // load old configuration or init new one if not existing
+        LicenseGroup.DefaultState = Docking.Components.LicenseGroup.State.ENABLED;
+        LoadConfigurationFile (configFile);
+
         // Create designer elements
         Build ();
 
         // tell the component manager about all widgets to manage
         SetDockFrame(theDockFrame);
-        SetStatusBar(theStatusBar);
-        SetToolBar(theToolBar);
+        // SetStatusBar(theStatusBar);
+        // SetToolBar(theToolBar);
         SetMenuBar(menubar3);
 
-        // search for all interrested components
-        ComponentFinder.SearchForComponents (new string[] { @"./*.exe", @"./*.dll" });
+        // scan all *.exe and *.dll files for component factories
+        string [] search = { System.IO.Path.Combine(assemblyDirectory, "*.exe"),
+                             System.IO.Path.Combine(assemblyDirectory, "*.dll") };
+        ComponentFinder.SearchForComponents (search);
 
         // install all known component menus
         AddComponentMenus();
 
-        // load old configuration or init new one if not existing
-        LoadConfigurationFile(mConfig);
-        InstallLanguageMenu("Options");
+        InstallLanguageMenu ("Options");
+
+        LoadLayout ();
+        SetLanguage ("default", true, false);
 
         // update with own persistence
-        LoadPersistence();
-
-        // set default layout and add layout menu
-        InstallLayoutMenu("Default");
-
-
+        LoadPersistency (true);
 
         // after layout has been set, call component initialization
         // any component could load its persistence data now
         ComponentsLoaded();
+
+        UpdateLanguage (false);
     }
-
-
 }

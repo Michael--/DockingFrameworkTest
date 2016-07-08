@@ -8,7 +8,7 @@ namespace DockingTest
         public static void Main(string[] args)
         {
             Application.Init();
-            MainWindow win = new MainWindow();
+            MainWindow win = new MainWindow(args, "Docking Test");
             win.Show();
             Application.Run();
         }
