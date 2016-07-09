@@ -1,48 +1,59 @@
 using System;
+using System.IO;
 using Docking.Components;
 
 public partial class MainWindow : ComponentManager
 {
-    public MainWindow (string [] args, string application_name): base (args, application_name)
-    {
-        var assemblyDirectory = System.IO.Path.GetDirectoryName (System.Reflection.Assembly.GetEntryAssembly ().Location);
+   public MainWindow (string [] args, string application_name) : base (args, application_name)
+   {
+      var assemblyDirectory = System.IO.Path.GetDirectoryName (System.Reflection.Assembly.GetEntryAssembly ().Location);
 
-        // configuration should stored in shared folder and not in application folder, note: this is an example
-        var configFile = System.IO.Path.Combine (assemblyDirectory, "config.xml");
+      // configuration should stored in shared folder and not in application folder, note: this is an example
+      var configFile = System.IO.Path.Combine (assemblyDirectory, "config.xml");
+      var defaultConfigFile = System.IO.Path.Combine (assemblyDirectory, "default_config.xml");
 
-        // load old configuration or init new one if not existing
-        LicenseGroup.DefaultState = Docking.Components.LicenseGroup.State.ENABLED;
-        LoadConfigurationFile (configFile);
+      // copy default config if exist as config if not already exist
+      // nice for 1st start of test app to avoid empty framework
+      // the default config is a part of this project
+      if (!File.Exists (configFile))
+      {
+         if (File.Exists (defaultConfigFile))
+            File.Copy (defaultConfigFile, configFile);
+      }
 
-        // Create designer elements
-        Build ();
+      // load old configuration or init new one if not existing
+      LicenseGroup.DefaultState = Docking.Components.LicenseGroup.State.ENABLED;
+      LoadConfigurationFile (configFile);
 
-        // tell the component manager about all widgets to manage
-        SetDockFrame(theDockFrame);
-        // SetStatusBar(theStatusBar);
-        // SetToolBar(theToolBar);
-        SetMenuBar(menubar3);
+      // Create designer elements
+      Build ();
 
-        // scan all *.exe and *.dll files for component factories
-        string [] search = { System.IO.Path.Combine(assemblyDirectory, "*.exe"),
-                             System.IO.Path.Combine(assemblyDirectory, "*.dll") };
-        ComponentFinder.SearchForComponents (search);
+      // tell the component manager about all widgets to manage
+      SetDockFrame (theDockFrame);
+      theStatusBar.Visible = false; // SetStatusBar(theStatusBar);
+      theToolBar.Visible = false;   // SetToolBar(theToolBar);
+      SetMenuBar (menubar3);
 
-        // install all known component menus
-        AddComponentMenus();
+      // scan all *.exe and *.dll files for component factories
+      string [] search = { System.IO.Path.Combine(assemblyDirectory, "*.exe"),
+                           System.IO.Path.Combine(assemblyDirectory, "*.dll") };
+      ComponentFinder.SearchForComponents (search);
 
-        InstallLanguageMenu ("Options");
+      // install all known component menus
+      AddComponentMenus ();
 
-        LoadLayout ();
-        SetLanguage ("default", true, false);
+      InstallLanguageMenu ("Options");
 
-        // update with own persistence
-        LoadPersistency (true);
+      LoadLayout ();
+      SetLanguage ("default", true, false);
 
-        // after layout has been set, call component initialization
-        // any component could load its persistence data now
-        ComponentsLoaded();
+      // update with own persistence
+      LoadPersistency (true);
 
-        UpdateLanguage (false);
-    }
+      // after layout has been set, call component initialization
+      // any component could load its persistence data now
+      ComponentsLoaded ();
+
+      UpdateLanguage (false);
+   }
 }
