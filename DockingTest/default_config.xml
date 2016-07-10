@@ -1,0 +1,43 @@
+<DockingConfiguration>
+  <ConfigSavedByVersion>1.0.6033.37890</ConfigSavedByVersion>
+  <MainWindow>
+    <windowstate>0</windowstate>
+    <x>0</x>
+    <y>23</y>
+    <w>1171</w>
+    <h>607</h>
+    <layout>Default</layout>
+    <FileChooserDialogLocalized.InitialFolderToShow>/Users/Michael</FileChooserDialogLocalized.InitialFolderToShow>
+    <MaxRecentFiles>9</MaxRecentFiles>
+    <RecentFiles.Count>0</RecentFiles.Count>
+  </MainWindow>
+  <layouts>
+    <layout name="Default" width="1161" height="569" size="1161" prefSize="1161" defaultHorSize="-1" defaultVerSize="-1" type="Horizontal">
+      <group size="678" prefSize="678" defaultHorSize="132.03095256868" defaultVerSize="100" type="Vertical">
+        <item size="184" prefSize="184" defaultHorSize="132.03095256868" defaultVerSize="65.2529144760474" id="Docking.Components.Messages" visible="True" status="Dockable" />
+        <item size="381" prefSize="381" defaultHorSize="100" defaultVerSize="134.637890554452" id="Docking.Components.LocalizationEditor" visible="True" status="Dockable" />
+      </group>
+      <group size="479" prefSize="479" defaultHorSize="92.9861707114373" defaultVerSize="100" type="Vertical">
+        <group size="282" prefSize="282" defaultHorSize="100" defaultVerSize="100" type="Tabbed" currentTabPage="1" isVertical="False">
+          <item size="-1" prefSize="-1" defaultHorSize="100" defaultVerSize="100" id="Docking.Components.PropertyViewer" visible="True" status="Dockable" />
+          <item size="-1" prefSize="-1" defaultHorSize="100" defaultVerSize="100" id="DockingExamples.LocalizationTest" visible="True" status="Dockable" />
+        </group>
+        <group size="283" prefSize="283" defaultHorSize="100" defaultVerSize="100" type="Tabbed" currentTabPage="1" isVertical="False">
+          <item size="-1" prefSize="-1" defaultHorSize="100" defaultVerSize="100" id="DockingExamples.VirtualListTest-1" visible="True" status="Dockable" />
+          <item size="-1" prefSize="-1" defaultHorSize="100" defaultVerSize="100" id="DockingExamples.Levenshtein" visible="True" status="Dockable" />
+        </group>
+      </group>
+    </layout>
+  </layouts>
+  <Docking.Components.PropertyViewer>
+    <ShowHelp>False</ShowHelp>
+    <Sort>2</Sort>
+  </Docking.Components.PropertyViewer>
+  <DockingExamples.VirtualListTest-1>
+    <Columns>[0 1 75][1 1 75][2 1 150]</Columns>
+    <FindVisible>False</FindVisible>
+    <ActiveText>
+    </ActiveText>
+    <List.Count>0</List.Count>
+  </DockingExamples.VirtualListTest-1>
+</DockingConfiguration>
