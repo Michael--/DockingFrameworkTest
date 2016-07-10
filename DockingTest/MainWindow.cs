@@ -6,6 +6,12 @@ public partial class MainWindow : ComponentManager
 {
    public MainWindow (string [] args, string application_name) : base (args, application_name)
    {
+      // running with mac os, Graphics could fail
+      GLib.ExceptionManager.UnhandledException += (a) => 
+      {
+         MessageWriteLine ("{0}: {1}", a, a.ExceptionObject);
+      };
+
       var assemblyDirectory = System.IO.Path.GetDirectoryName (System.Reflection.Assembly.GetEntryAssembly ().Location);
 
       // configuration should stored in shared folder and not in application folder, note: this is an example
