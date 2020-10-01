@@ -6,4 +6,4 @@
 	url = https://github.com/Michael--/Florence.git
 [submodule "external/DockingFrameworkExamples"]
 	path = external/DockingFrameworkExamples
-	url = ../DockingFrameworkExamples.git
+	url = https://github.com/Michael--/DockingFrameworkExamples.git
