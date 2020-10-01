@@ -4,7 +4,8 @@ using Docking.Components;
 
 public partial class MainWindow : ComponentManager
 {
-   public MainWindow (string [] args, string application_name) : base (args, application_name)
+   public MainWindow (string [] args, string application_name)
+   : base (args, "en-US", application_name)
    {
       // running with mac os, Graphics could fail
       GLib.ExceptionManager.UnhandledException += (a) => 
