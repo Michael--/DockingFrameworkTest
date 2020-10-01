@@ -1,12 +1,14 @@
-using System;
 using System.IO;
 using Docking.Components;
 
 public partial class MainWindow : ComponentManager
 {
-   public MainWindow (string [] args, string application_name)
-   : base (args, "en-US", application_name)
+   public MainWindow()
    {
+      MessageBox.Init(this);
+
+      this.Title = ApplicationName;
+
       // running with mac os, Graphics could fail
       GLib.ExceptionManager.UnhandledException += (a) => 
       {
