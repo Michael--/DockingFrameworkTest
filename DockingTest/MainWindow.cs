@@ -5,6 +5,8 @@ public partial class MainWindow : ComponentManager
 {
    public MainWindow()
    {
+      LicenseGroup.DefaultState = Docking.Components.LicenseGroup.State.ENABLED;
+
       MessageBox.Init(this);
 
       this.Title = ApplicationName;
@@ -21,17 +23,12 @@ public partial class MainWindow : ComponentManager
       var configFile = System.IO.Path.Combine (assemblyDirectory, "config.xml");
       var defaultConfigFile = System.IO.Path.Combine (assemblyDirectory, "default_config.xml");
 
-      // copy default config if exist as config if not already exist
-      // nice for 1st start of test app to avoid empty framework
-      // the default config is a part of this project
-      if (!File.Exists (configFile))
-      {
-         if (File.Exists (defaultConfigFile))
+      // if no config exists, take default config as initial setup
+      if(!File.Exists (configFile))
+         if(File.Exists (defaultConfigFile))
             File.Copy (defaultConfigFile, configFile);
-      }
-
+      
       // load old configuration or init new one if not existing
-      LicenseGroup.DefaultState = Docking.Components.LicenseGroup.State.ENABLED;
       LoadConfigurationFile (configFile);
 
       // Create designer elements
@@ -43,17 +40,12 @@ public partial class MainWindow : ComponentManager
       theToolBar.Visible = false;   // SetToolBar(theToolBar);
       SetMenuBar (menubar3);
 
-      // scan all *.exe and *.dll files for component factories
-      string [] search = { System.IO.Path.Combine(assemblyDirectory, "*.exe"),
-                           System.IO.Path.Combine(assemblyDirectory, "*.dll") };
-      ComponentFinder.SearchForComponents (search);
-
-      // install all known component menus
-      AddComponentMenus ();
+      SearchLoadAndInitializeComponentsFromDLLs();
 
       InstallLanguageMenu ("Options");
 
       LoadLayout ();
+
       SetLanguage ("default", true, false);
 
       // update with own persistence
